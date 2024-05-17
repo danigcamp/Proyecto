@@ -63,13 +63,22 @@ public class Manejador_Login implements ActionListener {
     }
 
     private boolean validarCampos() {
-        if (fRM_Login.getjUsuario().getText().isEmpty() || fRM_Login.getjContrasena().getText().isEmpty()) {
+        
+        if (fRM_Login.getjUsuario().getText().isEmpty() || fRM_Login.getjContrasena().getPassword().length==0) {
 
             JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos.");
             return false;
         }
 
         return true;
+    }
+
+    public Login getL() {
+        return l;
+    }
+
+    public void setL(Login l) {
+        this.l = l;
     }
 
 }

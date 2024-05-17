@@ -48,7 +48,7 @@ public class Manejador_Menu implements ActionListener {
                 break;
 
             case "Registro Prestamos":
-                new Manejador_Prestamos();
+                new Manejador_Prestamos(this);
                 frmMenu.dispose();
                 break;
 
@@ -65,4 +65,14 @@ public class Manejador_Menu implements ActionListener {
 
     } //Fin del metodo 
 
+    public Manejador_Login getManejador_Login() {
+        return manejador_Login;
+    }
+
+    public void setManejador_Login(Manejador_Login manejador_Login) {
+        this.manejador_Login = manejador_Login;
+    }
+
+    
 } //Fin de la clase 
+

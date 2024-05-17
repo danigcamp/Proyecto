@@ -4,7 +4,9 @@
  */
 package ucr.ac.cr.modelo;
 
+import java.awt.List;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,14 +15,17 @@ import java.time.LocalDate;
 public class Prestamo {
 
     private int id;
-    private String Nombre;
-    private int libro_Solicitidos;
+    private String carnet;
+    private ArrayList <Libro> libro_Solicitidos;
     private LocalDate fecha_Inicio;
     private LocalDate fecha_fin;
 
-    public Prestamo(int id, String Nombre, int libro_Solicitidos, LocalDate fecha_Inicio, LocalDate fecha_fin) {
+    public Prestamo() {
+    }
+
+    public Prestamo(int id, String carnet, ArrayList<Libro> libro_Solicitidos, LocalDate fecha_Inicio, LocalDate fecha_fin) {
         this.id = id;
-        this.Nombre = Nombre;
+        this.carnet = carnet;
         this.libro_Solicitidos = libro_Solicitidos;
         this.fecha_Inicio = fecha_Inicio;
         this.fecha_fin = fecha_fin;
@@ -34,23 +39,22 @@ public class Prestamo {
         this.id = id;
     }
 
-    public String getNombre() {
-        return Nombre;
+    public String getCarnet() {
+        return carnet;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+    public void setCarnet(String carnet) {
+        this.carnet = carnet;
     }
 
-    public int getLibro_Solicitidos() {
+    public ArrayList<Libro> getLibro_Solicitidos() {
         return libro_Solicitidos;
     }
 
-    public void setLibro_Solicitidos(int libro_Solicitidos) {
+    public void setLibro_Solicitidos(ArrayList<Libro> libro_Solicitidos) {
         this.libro_Solicitidos = libro_Solicitidos;
     }
 
-    
     public LocalDate getFecha_Inicio() {
         return fecha_Inicio;
     }
@@ -67,20 +71,10 @@ public class Prestamo {
         this.fecha_fin = fecha_fin;
     }
 
-            // Calcula la diferencia entre las fechas en días
-      public int getDiasSolicitados() {
-
-        int diasEntreFechas = (int) (fecha_fin.toEpochDay() - fecha_Inicio.toEpochDay());
-        return diasEntreFechas;
-    }
-
     @Override
     public String toString() {
-        return "Prestamo{" + "id=" + id + ", Nombre=" + Nombre + ", libro_Solicitidos=" + libro_Solicitidos + ", fecha_Inicio=" + fecha_Inicio + ", fecha_fin=" + fecha_fin + '}';
+        return "Prestamo{" + "id=" + id + ", carnet=" + carnet + ", libro_Solicitidos=" + libro_Solicitidos + ", fecha_Inicio=" + fecha_Inicio + ", fecha_fin=" + fecha_fin + '}';
     }
-    
+
   
-    
-    
-    
 }

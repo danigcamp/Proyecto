@@ -4,7 +4,13 @@
  */
 package ucr.ac.cr.vista;
 
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import ucr.ac.cr.modelo.Prestamo;
+import ucr.ac.cr.modelo.Registro_Prestamo;
 
 /**
  *
@@ -12,12 +18,44 @@ import javax.swing.JTextField;
  */
 public class FRM_Prestamo extends javax.swing.JFrame {
 
+    private String dateSolicitado;
+    private String dateEntrega;
+
     /**
      * Creates new form FRM_Prestamo
      */
     public FRM_Prestamo() {
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+
+    public void escuchadorMenu(ActionListener manejador) {
+        agregar.addActionListener(manejador);
+        modificar.addActionListener(manejador);
+        eliminar.addActionListener(manejador);
+        buscar.addActionListener(manejador);
+        Salir.addActionListener(manejador);
+    } //Fin del metodo 
+
+    public void actualizarListaPrestamoATabla(Registro_Prestamo registro_Prestamo) {
+        DefaultTableModel modeloTabla = (DefaultTableModel) jTable1.getModel();
+
+        if (registro_Prestamo.getListaPrestamos().isEmpty()) {
+            modeloTabla.setRowCount(0); // Limpiar la tabla si no hay préstamos
+        } else {
+            modeloTabla.setRowCount(0); // Limpiar la tabla antes de agregar nuevos préstamos
+
+            for (Prestamo prestamo : registro_Prestamo.getListaPrestamos()) {
+                Object[] fila = {
+                    prestamo.getId(),
+                    prestamo.getCarnet(),
+                    prestamo.getLibro_Solicitidos(),
+                    prestamo.getFecha_Inicio(),
+                    prestamo.getFecha_fin()
+                };
+                modeloTabla.addRow(fila);
+            }
+        }
     }
 
     /**
@@ -39,144 +77,156 @@ public class FRM_Prestamo extends javax.swing.JFrame {
         Salir = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
-        txtCelular = new javax.swing.JTextField();
+        txtCarnet = new javax.swing.JTextField();
         registroEstudiantes = new javax.swing.JLabel();
         comboLibros = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jSolicitado = new javax.swing.JButton();
+        jFechaEntrega = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         agregar.setBackground(new java.awt.Color(204, 255, 204));
         agregar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         agregar.setText("Agregar");
+        getContentPane().add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, -1, -1));
 
         modificar.setBackground(new java.awt.Color(204, 255, 204));
         modificar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         modificar.setText("Modificar");
+        modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 360, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 102, 102));
         jLabel3.setText("ID");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 102, 102));
-        jLabel4.setText("Nombre");
+        jLabel4.setText("Carnet");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
         eliminar.setBackground(new java.awt.Color(204, 255, 204));
         eliminar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         eliminar.setText("Eliminar");
+        getContentPane().add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 102, 102));
-        jLabel5.setText("# Prestamo ");
+        jLabel5.setText("Fecha solicitado ");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
 
         buscar.setBackground(new java.awt.Color(204, 255, 204));
         buscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         buscar.setText("Buscar");
+        getContentPane().add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 360, -1, -1));
 
         Salir.setBackground(new java.awt.Color(204, 255, 204));
         Salir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Salir.setText("Salir");
+        getContentPane().add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 360, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 102, 102));
         jLabel6.setText("Libro Solicitado");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
 
         txtId.setBackground(new java.awt.Color(255, 204, 204));
         txtId.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 43, -1));
 
-        txtNombre.setBackground(new java.awt.Color(255, 204, 204));
-        txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        txtCelular.setBackground(new java.awt.Color(255, 204, 204));
-        txtCelular.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCarnet.setBackground(new java.awt.Color(255, 204, 204));
+        txtCarnet.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        getContentPane().add(txtCarnet, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 102, -1));
 
         registroEstudiantes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         registroEstudiantes.setForeground(new java.awt.Color(255, 153, 153));
         registroEstudiantes.setText("Registro Prestamo");
+        getContentPane().add(registroEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, -1, -1));
 
         comboLibros.setBackground(new java.awt.Color(255, 204, 204));
+        getContentPane().add(comboLibros, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 123, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addGap(184, 184, 184)))
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtId)
-                            .addComponent(txtNombre)
-                            .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(246, 246, 246)
-                        .addComponent(comboLibros, 0, 121, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(102, 102, 102)
-                            .addComponent(registroEstudiantes))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(agregar)
-                            .addGap(18, 18, 18)
-                            .addComponent(modificar)
-                            .addGap(18, 18, 18)
-                            .addComponent(eliminar)
-                            .addGap(18, 18, 18)
-                            .addComponent(buscar)
-                            .addGap(18, 18, 18)
-                            .addComponent(Salir)))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(comboLibros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(80, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(registroEstudiantes)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(agregar)
-                        .addComponent(modificar)
-                        .addComponent(eliminar)
-                        .addComponent(buscar)
-                        .addComponent(Salir))
-                    .addContainerGap()))
-        );
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel7.setText("Fecha Entrega");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Carnet", "Libro Solicitado", "Fecha Entrega", "Fecha Solicitado"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 660, 250));
+
+        jSolicitado.setBackground(new java.awt.Color(255, 204, 204));
+        jSolicitado.setForeground(new java.awt.Color(255, 255, 255));
+        jSolicitado.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Seleccionar  fecha y hora", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jSolicitado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSolicitadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jSolicitado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 150, 30));
+
+        jFechaEntrega.setBackground(new java.awt.Color(255, 204, 204));
+        jFechaEntrega.setForeground(new java.awt.Color(255, 255, 255));
+        jFechaEntrega.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Seleccionar  fecha y hora", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jFechaEntrega.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFechaEntregaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jFechaEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 150, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modificarActionPerformed
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
+
+    private void jSolicitadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSolicitadoActionPerformed
+        // TODO add your handling code here:
+        // Mostrar el diálogo para seleccionar la fecha y la hora
+        SeleccionFechaHora seleccionFechaHora = new SeleccionFechaHora(fechaHora -> {
+            // Obtener la fecha y la hora seleccionadas desde el diálogo y realizar las operaciones necesarias
+            dateSolicitado = fechaHora;
+            jSolicitado.setText(dateSolicitado); // Establecer el texto del botón con la fecha y la hora seleccionadas
+        });
+    }//GEN-LAST:event_jSolicitadoActionPerformed
+
+    private void jFechaEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFechaEntregaActionPerformed
+        // TODO add your handling code here:
+        // Mostrar el diálogo para seleccionar la fecha y la hora
+        SeleccionFechaHora seleccionFechaHora = new SeleccionFechaHora(fechaHora -> {
+            // Obtener la fecha y la hora seleccionadas desde el diálogo y realizar las operaciones necesarias
+            dateEntrega = fechaHora;
+            jFechaEntrega.setText(dateEntrega); // Establecer el texto del botón con la fecha y la hora seleccionadas
+        });
+    }//GEN-LAST:event_jFechaEntregaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,39 +269,59 @@ public class FRM_Prestamo extends javax.swing.JFrame {
     private javax.swing.JButton buscar;
     private javax.swing.JComboBox<String> comboLibros;
     private javax.swing.JButton eliminar;
+    private javax.swing.JButton jFechaEntrega;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jSolicitado;
+    private javax.swing.JTable jTable1;
     private javax.swing.JButton modificar;
     private javax.swing.JLabel registroEstudiantes;
-    private javax.swing.JTextField txtCelular;
+    private javax.swing.JTextField txtCarnet;
     private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 
     public JTextField getTxtCarnet() {
-        return txtId;
+        return txtCarnet;
     }
 
     public void setTxtCarnet(JTextField txtCarnet) {
-        this.txtId = txtCarnet;
+        this.txtCarnet = txtCarnet;
     }
 
-    public JTextField getTxtCelular() {
-        return txtCelular;
+    public JTextField getTxtId() {
+        return txtId;
     }
 
-    public void setTxtCelular(JTextField txtCelular) {
-        this.txtCelular = txtCelular;
+    public void setTxtId(JTextField txtId) {
+        this.txtId = txtId;
     }
 
-    public JTextField getTxtNombre() {
-        return txtNombre;
+    public JComboBox<String> getComboLibros() {
+        return comboLibros;
     }
 
-    public void setTxtNombre(JTextField txtNombre) {
-        this.txtNombre = txtNombre;
+    public void setComboLibros(JComboBox<String> comboLibros) {
+        this.comboLibros = comboLibros;
+    }
+
+    public JButton getjFechaEntrega() {
+        return jFechaEntrega;
+    }
+
+    public void setjFechaEntrega(JButton jFechaEntrega) {
+        this.jFechaEntrega = jFechaEntrega;
+    }
+
+    public JButton getjSolicitado() {
+        return jSolicitado;
+    }
+
+    public void setjSolicitado(JButton jSolicitado) {
+        this.jSolicitado = jSolicitado;
     }
 
 
