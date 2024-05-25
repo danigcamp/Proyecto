@@ -66,10 +66,12 @@ public class FRM_Menu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jmiRegistroLibros = new javax.swing.JMenuItem();
-        jmiRegistroEstudiantes = new javax.swing.JMenuItem();
         jmiRegistroPrestamos = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jmiRegistroEstudiantes = new javax.swing.JMenuItem();
         jmiRegistroBibliotecario = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        jmiSalir1 = new javax.swing.JMenuItem();
         jmiSalir = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
@@ -89,25 +91,46 @@ public class FRM_Menu extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 153, 153));
         jLabel3.setText("BIBLIOTECA UNIVERSITARIA");
 
-        jMenu3.setText("Modulos");
+        jMenu3.setText("Registrar datos");
+        jMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jmiRegistroLibros.setText("Registro Libros");
+        jmiRegistroLibros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu3.add(jmiRegistroLibros);
 
-        jmiRegistroEstudiantes.setText("Registro Estudiantes");
-        jMenu3.add(jmiRegistroEstudiantes);
-
         jmiRegistroPrestamos.setText("Registro Prestamos");
+        jmiRegistroPrestamos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu3.add(jmiRegistroPrestamos);
-
-        jmiRegistroBibliotecario.setText("Registro Bibliotecarios");
-        jMenu3.add(jmiRegistroBibliotecario);
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Edit");
+        jMenu5.setText("Administracion de usuario");
+        jMenu5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jmiRegistroEstudiantes.setText("Registro Estudiantes");
+        jmiRegistroEstudiantes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenu5.add(jmiRegistroEstudiantes);
+
+        jmiRegistroBibliotecario.setText("Registro Bibliotecarios");
+        jmiRegistroBibliotecario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenu5.add(jmiRegistroBibliotecario);
+
+        jMenuBar1.add(jMenu5);
+
+        jMenu4.setText("Opciones");
+        jMenu4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jmiSalir1.setText("About");
+        jmiSalir1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jmiSalir1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiSalir1ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jmiSalir1);
 
         jmiSalir.setText("Salir");
+        jmiSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu4.add(jmiSalir);
 
         jMenuBar1.add(jMenu4);
@@ -144,6 +167,12 @@ public class FRM_Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jmiSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSalir1ActionPerformed
+        // TODO add your handling code here:
+        FRM_About frm_About = new FRM_About();
+        frm_About.setVisible(true);
+    }//GEN-LAST:event_jmiSalir1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -155,6 +184,7 @@ public class FRM_Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel jRol;
     private javax.swing.JMenuItem jmiRegistroBibliotecario;
@@ -162,5 +192,6 @@ public class FRM_Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiRegistroLibros;
     private javax.swing.JMenuItem jmiRegistroPrestamos;
     private javax.swing.JMenuItem jmiSalir;
+    private javax.swing.JMenuItem jmiSalir1;
     // End of variables declaration//GEN-END:variables
 } //Fin de la clase 
