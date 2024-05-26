@@ -14,6 +14,7 @@ public class FRM_Reporte extends javax.swing.JFrame {
      * Creates new form FRM_Reporte
      */
     public FRM_Reporte() {
+        
         initComponents();
         this.setLocationRelativeTo(null);
     }

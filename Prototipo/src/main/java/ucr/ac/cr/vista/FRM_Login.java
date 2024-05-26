@@ -12,13 +12,13 @@ import javax.swing.JTextField;
  *
  * @author danig
  */
-public class FRM_Login extends javax.swing.JFrame 
-{
+public class FRM_Login extends javax.swing.JFrame {
+
     /**
      * Creates new form FRM_Menu
      */
-    public FRM_Login() 
-    {
+    public FRM_Login() {
+        this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -38,12 +38,11 @@ public class FRM_Login extends javax.swing.JFrame
     public void setjUsuario(JTextField jUsuario) {
         this.jUsuario = jUsuario;
     }
-    
-    public void escuchadorMenu(ActionListener manejador)
-    {
-        jEntrar.addActionListener(manejador); 
-        jSalir.addActionListener(manejador); 
-     
+
+    public void escuchadorMenu(ActionListener manejador) {
+        jEntrar.addActionListener(manejador);
+        jSalir.addActionListener(manejador);
+
     } //Fin del metodo 
 
     /**
@@ -94,7 +93,7 @@ public class FRM_Login extends javax.swing.JFrame
 
         jSalir.setBackground(new java.awt.Color(204, 255, 204));
         jSalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jSalir.setText("Salir");
+        jSalir.setText("Atras");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

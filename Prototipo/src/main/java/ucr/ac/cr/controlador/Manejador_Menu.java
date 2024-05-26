@@ -26,7 +26,7 @@ public class Manejador_Menu implements ActionListener {
         frmMenu.getjRol().setText(login.getRol());
         frmMenu.setVisible(true);
         frmMenu.escuchadorMenu(this);
-        
+
     } //Fin del metodo 
 
     public Manejador_Menu() {
@@ -38,7 +38,7 @@ public class Manejador_Menu implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand().toString()) {
             case "Registro Estudiantes":
-                new Manejador_Estudiantes(this);
+                new Manejador_Login();
                 frmMenu.dispose();
                 break;
 
@@ -53,7 +53,7 @@ public class Manejador_Menu implements ActionListener {
                 break;
 
             case "Registro Bibliotecarios":
-                new Manejador_Bibliotecario(this);
+                new Manejador_Login();
                 frmMenu.dispose();
                 break;
 
@@ -73,6 +73,5 @@ public class Manejador_Menu implements ActionListener {
         this.manejador_Login = manejador_Login;
     }
 
-    
 } //Fin de la clase 
 

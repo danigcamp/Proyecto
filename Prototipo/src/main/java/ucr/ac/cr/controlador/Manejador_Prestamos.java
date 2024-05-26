@@ -36,6 +36,18 @@ public class Manejador_Prestamos implements ActionListener {
         frmPrestamo.actualizarListaPrestamoATabla(rPrestamo);
     } //Fin de la clase 
 
+    public Manejador_Prestamos(Manejador_Menu menu, ArrayList<Libro> listaLibros) {
+        System.err.println("Entra");
+        this.listaLibros = listaLibros;
+        this.menu = menu;
+        rPrestamo = new Registro_Prestamo();
+        frmPrestamo = new FRM_Prestamo();
+        frmPrestamo.setVisible(true);
+        frmPrestamo.escuchadorMenu(this);
+        frmPrestamo.llenarComboLibros(listaLibros);
+
+    } //Fin de la clase 
+
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {

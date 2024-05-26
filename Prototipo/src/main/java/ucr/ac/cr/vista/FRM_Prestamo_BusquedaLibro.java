@@ -30,6 +30,7 @@ public class FRM_Prestamo_BusquedaLibro extends javax.swing.JFrame {
      * Creates new form FRM_Libros
      */
     public FRM_Prestamo_BusquedaLibro() {
+        this.setUndecorated(true);
         initComponents();
         registro_Libro = new Registro_Libro();
         this.setLocationRelativeTo(null);
@@ -55,7 +56,6 @@ public class FRM_Prestamo_BusquedaLibro extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         buttonGroup1 = new javax.swing.ButtonGroup();
         agregar = new javax.swing.JButton();
-        modificar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         eliminar = new javax.swing.JButton();
@@ -78,6 +78,7 @@ public class FRM_Prestamo_BusquedaLibro extends javax.swing.JFrame {
         registroEstudiantes2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        limpiar = new javax.swing.JButton();
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 102, 102));
@@ -89,55 +90,54 @@ public class FRM_Prestamo_BusquedaLibro extends javax.swing.JFrame {
         agregar.setBackground(new java.awt.Color(204, 255, 204));
         agregar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         agregar.setText("Agregar al prestamo");
+        agregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarActionPerformed(evt);
             }
         });
-        getContentPane().add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 450, -1, -1));
-
-        modificar.setBackground(new java.awt.Color(204, 255, 204));
-        modificar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        modificar.setText("Guardar");
-        getContentPane().add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, -1, -1));
+        getContentPane().add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 450, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 102, 102));
         jLabel3.setText("Titulo");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 102, 102));
         jLabel4.setText("Autor");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
         eliminar.setBackground(new java.awt.Color(204, 255, 204));
         eliminar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        eliminar.setText("Eliminar");
-        getContentPane().add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, -1, -1));
+        eliminar.setText("Eliminar libro solicitado");
+        eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 450, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 102, 102));
         jLabel5.setText("Genero");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
         buscar.setBackground(new java.awt.Color(204, 255, 204));
         buscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         buscar.setText("Buscar");
-        getContentPane().add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, -1, -1));
+        buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 140, -1));
 
         Salir.setBackground(new java.awt.Color(204, 255, 204));
         Salir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Salir.setText("Salir");
-        getContentPane().add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 450, -1, -1));
+        Salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 450, -1, -1));
 
         txtTitulo.setBackground(new java.awt.Color(255, 204, 204));
         txtTitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        getContentPane().add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 150, -1));
+        getContentPane().add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 300, -1));
 
         txtGenero.setBackground(new java.awt.Color(255, 204, 204));
         txtGenero.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        getContentPane().add(txtGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 90, -1));
+        getContentPane().add(txtGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 160, -1));
 
         txtAutor.setBackground(new java.awt.Color(255, 204, 204));
         txtAutor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -146,39 +146,39 @@ public class FRM_Prestamo_BusquedaLibro extends javax.swing.JFrame {
                 txtAutorActionPerformed(evt);
             }
         });
-        getContentPane().add(txtAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 91, -1));
+        getContentPane().add(txtAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 190, -1));
 
         registroEstudiantes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         registroEstudiantes.setForeground(new java.awt.Color(255, 153, 153));
         registroEstudiantes.setText("Libros prestados");
-        getContentPane().add(registroEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, -1, -1));
+        getContentPane().add(registroEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 250, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 102, 102));
         jLabel7.setText("ID");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         txtID.setBackground(new java.awt.Color(255, 204, 204));
         txtID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        getContentPane().add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 70, -1));
+        getContentPane().add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 60, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 102, 102));
         jLabel8.setText("Editorial");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
         txtEditorial.setBackground(new java.awt.Color(255, 204, 204));
         txtEditorial.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        getContentPane().add(txtEditorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 138, -1));
+        getContentPane().add(txtEditorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 190, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 102, 102));
         jLabel10.setText("Ano");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
         txtAno.setBackground(new java.awt.Color(255, 204, 204));
         txtAno.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        getContentPane().add(txtAno, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 150, -1));
+        getContentPane().add(txtAno, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 90, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -198,7 +198,7 @@ public class FRM_Prestamo_BusquedaLibro extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 450, 160));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 790, 160));
 
         registroEstudiantes1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         registroEstudiantes1.setForeground(new java.awt.Color(255, 153, 153));
@@ -207,8 +207,8 @@ public class FRM_Prestamo_BusquedaLibro extends javax.swing.JFrame {
 
         registroEstudiantes2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         registroEstudiantes2.setForeground(new java.awt.Color(255, 153, 153));
-        registroEstudiantes2.setText("Busqueda Libros");
-        getContentPane().add(registroEstudiantes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, -1, -1));
+        registroEstudiantes2.setText("Libros");
+        getContentPane().add(registroEstudiantes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 0, -1, -1));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -228,7 +228,13 @@ public class FRM_Prestamo_BusquedaLibro extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable2);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 450, 220));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 790, 220));
+
+        limpiar.setBackground(new java.awt.Color(204, 255, 204));
+        limpiar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        limpiar.setText("Limpiar ");
+        limpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -238,7 +244,9 @@ public class FRM_Prestamo_BusquedaLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAutorActionPerformed
 
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
+
         // TODO add your handling code here:
+
     }//GEN-LAST:event_agregarActionPerformed
 
     /**
@@ -279,15 +287,47 @@ public class FRM_Prestamo_BusquedaLibro extends javax.swing.JFrame {
         });
     }
 
-    public void actualizarListaLibroATabla(Registro_Libro registroLibro) {
+    public void escuchadorMenu(ActionListener manejador) {
+        agregar.addActionListener(manejador);
+        eliminar.addActionListener(manejador);
+        buscar.addActionListener(manejador);
+        Salir.addActionListener(manejador);
+        limpiar.addActionListener(manejador);
+    } //Fin del metodo 
+
+    public void actualizarListaLibroATablaID(Libro libro) {
+        DefaultTableModel modeloTabla = (DefaultTableModel) jTable2.getModel();
+
+        modeloTabla.setRowCount(0); // Limpiar la tabla antes de agregar nuevos libros
+
+        Object[] fila = {
+            libro.getId(),
+            libro.getTitulo(),
+            libro.getEditorial(),
+            libro.getAno(),
+            libro.getGenero(),
+            libro.getAutor(),
+            (boolean) libro.isEstado()
+        };
+        modeloTabla.addRow(fila);
+
+    }
+
+    public void limpiarTabla() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) jTable2.getModel();
+        modeloTabla.setRowCount(0); // Limpiar la tabla
+    }
+
+    
+      public void actualizarListaLibroATablaAlBorrar(ArrayList<Libro> listaLibrosPrestados) {
         DefaultTableModel modeloTabla = (DefaultTableModel) jTable1.getModel();
 
-        if (registroLibro.getListaLibros().isEmpty()) {
+        if (listaLibrosPrestados.isEmpty()) {
             modeloTabla.setRowCount(0); // Limpiar la tabla
         } else {
             modeloTabla.setRowCount(0); // Limpiar la tabla antes de agregar nuevos libros
 
-            for (Libro libro : registroLibro.getListaLibros()) {
+            for (Libro libro : listaLibrosPrestados) {
                 Object[] fila = {
                     libro.getId(),
                     libro.getTitulo(),
@@ -300,6 +340,154 @@ public class FRM_Prestamo_BusquedaLibro extends javax.swing.JFrame {
                 modeloTabla.addRow(fila);
             }
         }
+    }
+    public void actualizarLibroATablaPrestamo(Libro libro) {
+        DefaultTableModel modeloTabla = (DefaultTableModel) jTable1.getModel();
+
+        Object[] fila = {
+            libro.getId(),
+            libro.getTitulo(),
+            libro.getEditorial(),
+            libro.getAno(),
+            libro.getGenero(),
+            libro.getAutor(),
+            (boolean) libro.isEstado()
+        };
+        modeloTabla.addRow(fila);
+
+    }
+
+    public void actualizarListaLibroATabla(Registro_Libro registroLibro, int comando) {
+        DefaultTableModel modeloTabla = (DefaultTableModel) jTable2.getModel();
+
+        if (registroLibro.getListaLibros().isEmpty()) {
+            modeloTabla.setRowCount(0); // Limpiar la tabla
+        } else {
+            modeloTabla.setRowCount(0); // Limpiar la tabla antes de agregar nuevos libros
+            switch (comando) {
+                case 0:
+                    for (Libro libro : registroLibro.buscarPorTitulo(txtTitulo.getText())) {
+                        Object[] fila = {
+                            libro.getId(),
+                            libro.getTitulo(),
+                            libro.getEditorial(),
+                            libro.getAno(),
+                            libro.getGenero(),
+                            libro.getAutor(),
+                            libro.isEstado()
+                        };
+                        modeloTabla.addRow(fila);
+                    }
+                    break;
+                case 1:
+                    for (Libro libro : registroLibro.buscarPorEditorial(txtEditorial.getText())) {
+                        Object[] fila = {
+                            libro.getId(),
+                            libro.getTitulo(),
+                            libro.getEditorial(),
+                            libro.getAno(),
+                            libro.getGenero(),
+                            libro.getAutor(),
+                            libro.isEstado()
+                        };
+                        modeloTabla.addRow(fila);
+                    }
+                    break;
+                case 2:
+                    for (Libro libro : registroLibro.buscarPorAno(Integer.parseInt(txtAno.getText()))) {
+                        Object[] fila = {
+                            libro.getId(),
+                            libro.getTitulo(),
+                            libro.getEditorial(),
+                            libro.getAno(),
+                            libro.getGenero(),
+                            libro.getAutor(),
+                            libro.isEstado()
+                        };
+                        modeloTabla.addRow(fila);
+                    }
+                    break;
+                case 3:
+                    for (Libro libro : registroLibro.buscarPorGenero(txtGenero.getText())) {
+                        Object[] fila = {
+                            libro.getId(),
+                            libro.getTitulo(),
+                            libro.getEditorial(),
+                            libro.getAno(),
+                            libro.getGenero(),
+                            libro.getAutor(),
+                            libro.isEstado()
+                        };
+                        modeloTabla.addRow(fila);
+                    }
+                    break;
+                case 4:
+                    for (Libro libro : registroLibro.buscarPorAutor(txtAutor.getText())) {
+                        Object[] fila = {
+                            libro.getId(),
+                            libro.getTitulo(),
+                            libro.getEditorial(),
+                            libro.getAno(),
+                            libro.getGenero(),
+                            libro.getAutor(),
+                            libro.isEstado()
+                        };
+                        modeloTabla.addRow(fila);
+                    }
+                    break;
+                default:
+
+                    break;
+            }
+        }
+    }
+
+    public JTextField getTxtAno() {
+        return txtAno;
+    }
+
+    public void setTxtAno(JTextField txtAno) {
+        this.txtAno = txtAno;
+    }
+
+    public JTextField getTxtAutor() {
+        return txtAutor;
+    }
+
+    public void setTxtAutor(JTextField txtAutor) {
+        this.txtAutor = txtAutor;
+    }
+
+    public JTextField getTxtEditorial() {
+        return txtEditorial;
+    }
+
+    public void setTxtEditorial(JTextField txtEditorial) {
+        this.txtEditorial = txtEditorial;
+    }
+
+    public JTextField getTxtGenero() {
+        return txtGenero;
+    }
+
+    public void setTxtGenero(JTextField txtGenero) {
+        this.txtGenero = txtGenero;
+    }
+
+    public JTextField getTxtID() {
+        return txtID;
+    }
+
+    public void setTxtID(JTextField txtID) {
+        this.txtID = txtID;
+    }
+
+    public JTextField getTxtTitulo() {
+        return txtTitulo;
+    }
+
+    public void setTxtTitulo(JTextField txtTitulo) {
+        this.txtTitulo = txtTitulo;
     }
 
 
@@ -320,7 +508,7 @@ public class FRM_Prestamo_BusquedaLibro extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JButton modificar;
+    private javax.swing.JButton limpiar;
     private javax.swing.JLabel registroEstudiantes;
     private javax.swing.JLabel registroEstudiantes1;
     private javax.swing.JLabel registroEstudiantes2;

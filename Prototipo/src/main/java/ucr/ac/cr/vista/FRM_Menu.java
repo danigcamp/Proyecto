@@ -17,6 +17,7 @@ public class FRM_Menu extends javax.swing.JFrame {
      * Creates new form FRM_Menu
      */
     public FRM_Menu(String rol) {
+        this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
 
@@ -28,6 +29,7 @@ public class FRM_Menu extends javax.swing.JFrame {
     }
 
     public FRM_Menu() {
+            this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
 
@@ -70,6 +72,8 @@ public class FRM_Menu extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jmiRegistroEstudiantes = new javax.swing.JMenuItem();
         jmiRegistroBibliotecario = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jmiSalir2 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jmiSalir1 = new javax.swing.JMenuItem();
         jmiSalir = new javax.swing.JMenuItem();
@@ -116,6 +120,20 @@ public class FRM_Menu extends javax.swing.JFrame {
         jMenu5.add(jmiRegistroBibliotecario);
 
         jMenuBar1.add(jMenu5);
+
+        jMenu6.setText("Reportes");
+        jMenu6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jmiSalir2.setText("Generar reporte");
+        jmiSalir2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jmiSalir2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiSalir2ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jmiSalir2);
+
+        jMenuBar1.add(jMenu6);
 
         jMenu4.setText("Opciones");
         jMenu4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -173,6 +191,10 @@ public class FRM_Menu extends javax.swing.JFrame {
         frm_About.setVisible(true);
     }//GEN-LAST:event_jmiSalir1ActionPerformed
 
+    private void jmiSalir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSalir2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmiSalir2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -185,6 +207,7 @@ public class FRM_Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel jRol;
     private javax.swing.JMenuItem jmiRegistroBibliotecario;
@@ -193,5 +216,6 @@ public class FRM_Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiRegistroPrestamos;
     private javax.swing.JMenuItem jmiSalir;
     private javax.swing.JMenuItem jmiSalir1;
+    private javax.swing.JMenuItem jmiSalir2;
     // End of variables declaration//GEN-END:variables
 } //Fin de la clase 

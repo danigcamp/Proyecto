@@ -23,6 +23,7 @@ public class FRM_Estudiante extends javax.swing.JFrame {
      * Creates new form FRM_Estudiante
      */
     public FRM_Estudiante() {
+        this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -317,7 +318,7 @@ public class FRM_Estudiante extends javax.swing.JFrame {
         this.txtNombre = txtNombre;
     }
 
- public void escuchadorMenu(ActionListener manejador) {
+    public void escuchadorMenu(ActionListener manejador) {
         agregar.addActionListener(manejador);
         modificar.addActionListener(manejador);
         eliminar.addActionListener(manejador);

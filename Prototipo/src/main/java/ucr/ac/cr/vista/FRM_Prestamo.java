@@ -5,10 +5,14 @@
 package ucr.ac.cr.vista;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import ucr.ac.cr.controlador.Manejador_Prestamo_BusquedaLibro;
+import ucr.ac.cr.modelo.Libro;
 import ucr.ac.cr.modelo.Prestamo;
 import ucr.ac.cr.modelo.Registro_Prestamo;
 
@@ -25,6 +29,7 @@ public class FRM_Prestamo extends javax.swing.JFrame {
      * Creates new form FRM_Prestamo
      */
     public FRM_Prestamo() {
+        this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -92,7 +97,7 @@ public class FRM_Prestamo extends javax.swing.JFrame {
         agregar.setBackground(new java.awt.Color(204, 255, 204));
         agregar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         agregar.setText("Agregar");
-        getContentPane().add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, -1, -1));
+        getContentPane().add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 360, -1, -1));
 
         modificar.setBackground(new java.awt.Color(204, 255, 204));
         modificar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -102,7 +107,7 @@ public class FRM_Prestamo extends javax.swing.JFrame {
                 modificarActionPerformed(evt);
             }
         });
-        getContentPane().add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 360, -1, -1));
+        getContentPane().add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 360, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 102, 102));
@@ -117,7 +122,7 @@ public class FRM_Prestamo extends javax.swing.JFrame {
         eliminar.setBackground(new java.awt.Color(204, 255, 204));
         eliminar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         eliminar.setText("Eliminar");
-        getContentPane().add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, -1, -1));
+        getContentPane().add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 360, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 102, 102));
@@ -127,16 +132,16 @@ public class FRM_Prestamo extends javax.swing.JFrame {
         buscar.setBackground(new java.awt.Color(204, 255, 204));
         buscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         buscar.setText("Buscar");
-        getContentPane().add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 360, -1, -1));
+        getContentPane().add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 360, -1, -1));
 
         Salir.setBackground(new java.awt.Color(204, 255, 204));
         Salir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Salir.setText("Salir");
-        getContentPane().add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 360, -1, -1));
+        getContentPane().add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 360, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 102, 102));
-        jLabel6.setText("Libro Solicitado");
+        jLabel6.setText("Libros Solicitado");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
 
         txtId.setBackground(new java.awt.Color(255, 204, 204));
@@ -155,10 +160,21 @@ public class FRM_Prestamo extends javax.swing.JFrame {
         registroEstudiantes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         registroEstudiantes.setForeground(new java.awt.Color(255, 153, 153));
         registroEstudiantes.setText("Registro Prestamo");
-        getContentPane().add(registroEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, -1, -1));
+        getContentPane().add(registroEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, -1, -1));
 
         comboLibros.setBackground(new java.awt.Color(255, 204, 204));
-        getContentPane().add(comboLibros, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 123, -1));
+        comboLibros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Opciones", "Selecionar libros" }));
+        comboLibros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                comboLibrosMouseClicked(evt);
+            }
+        });
+        comboLibros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboLibrosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(comboLibros, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 300, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 102, 102));
@@ -170,16 +186,17 @@ public class FRM_Prestamo extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Carnet", "Libro Solicitado", "Fecha Entrega", "Fecha Solicitado"
+                "Id", "Carnet", "Libros Solicitado", "Fecha Entrega", "Fecha Solicitado"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 660, 250));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 810, 250));
 
         jSolicitado.setBackground(new java.awt.Color(255, 204, 204));
-        jSolicitado.setForeground(new java.awt.Color(255, 255, 255));
-        jSolicitado.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Seleccionar  fecha y hora", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jSolicitado.setForeground(new java.awt.Color(0, 51, 51));
+        jSolicitado.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccionar  fecha y hora"));
+        jSolicitado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jSolicitado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jSolicitadoActionPerformed(evt);
@@ -188,8 +205,9 @@ public class FRM_Prestamo extends javax.swing.JFrame {
         getContentPane().add(jSolicitado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 150, 30));
 
         jFechaEntrega.setBackground(new java.awt.Color(255, 204, 204));
-        jFechaEntrega.setForeground(new java.awt.Color(255, 255, 255));
-        jFechaEntrega.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Seleccionar  fecha y hora", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jFechaEntrega.setForeground(new java.awt.Color(0, 51, 51));
+        jFechaEntrega.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccionar  fecha y hora"));
+        jFechaEntrega.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jFechaEntrega.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFechaEntregaActionPerformed(evt);
@@ -227,6 +245,29 @@ public class FRM_Prestamo extends javax.swing.JFrame {
             jFechaEntrega.setText(dateEntrega); // Establecer el texto del botón con la fecha y la hora seleccionadas
         });
     }//GEN-LAST:event_jFechaEntregaActionPerformed
+
+    private void comboLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboLibrosActionPerformed
+        // TODO add your handling code here:
+        int selectedItem = comboLibros.getSelectedIndex();
+        if (1 == (selectedItem)) {
+            new Manejador_Prestamo_BusquedaLibro();
+            dispose();
+        }
+
+    }//GEN-LAST:event_comboLibrosActionPerformed
+    public void llenarComboLibros(ArrayList<Libro> listaLibrosPrestados) {
+   
+        for (int i = 0; i < listaLibrosPrestados.size(); i++) {
+            Libro libro = listaLibrosPrestados.get(i);
+            comboLibros.addItem(i+"."+libro.getTitulo());
+        }
+
+    }
+    private void comboLibrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboLibrosMouseClicked
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_comboLibrosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -323,7 +364,5 @@ public class FRM_Prestamo extends javax.swing.JFrame {
     public void setjSolicitado(JButton jSolicitado) {
         this.jSolicitado = jSolicitado;
     }
-
-
 
 }

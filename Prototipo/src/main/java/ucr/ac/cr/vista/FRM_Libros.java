@@ -27,6 +27,7 @@ public class FRM_Libros extends javax.swing.JFrame {
      * Creates new form FRM_Libros
      */
     public FRM_Libros() {
+        this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
         buttonGroup1.add(jRadioButton1);
@@ -256,30 +257,28 @@ public class FRM_Libros extends javax.swing.JFrame {
         });
     }
 
-   public void actualizarListaLibroATabla(Registro_Libro registroLibro) {
-    DefaultTableModel modeloTabla = (DefaultTableModel) jTable1.getModel();
-    
-    
-    if (registroLibro.getListaLibros().isEmpty()) {
-        modeloTabla.setRowCount(0); // Limpiar la tabla
-    } else {
-        modeloTabla.setRowCount(0); // Limpiar la tabla antes de agregar nuevos libros
-        
-        for (Libro libro : registroLibro.getListaLibros()) {
-            Object[] fila = {
-                libro.getId(),
-                libro.getTitulo(),
-                libro.getEditorial(),
-                libro.getAno(),
-                libro.getGenero(),
-                libro.getAutor(),
-                (boolean) libro.isEstado()
-            };
-            modeloTabla.addRow(fila);
+    public void actualizarListaLibroATabla(Registro_Libro registroLibro) {
+        DefaultTableModel modeloTabla = (DefaultTableModel) jTable1.getModel();
+
+        if (registroLibro.getListaLibros().isEmpty()) {
+            modeloTabla.setRowCount(0); // Limpiar la tabla
+        } else {
+            modeloTabla.setRowCount(0); // Limpiar la tabla antes de agregar nuevos libros
+
+            for (Libro libro : registroLibro.getListaLibros()) {
+                Object[] fila = {
+                    libro.getId(),
+                    libro.getTitulo(),
+                    libro.getEditorial(),
+                    libro.getAno(),
+                    libro.getGenero(),
+                    libro.getAutor(),
+                    (boolean) libro.isEstado()
+                };
+                modeloTabla.addRow(fila);
+            }
         }
     }
-}
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

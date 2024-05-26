@@ -52,6 +52,56 @@ public class Registro_Libro {
         return null;
     }
 
+      public ArrayList<Libro> buscarPorTitulo(String titulo) {
+        ArrayList<Libro> resultados = new ArrayList<>();
+        for (Libro libro : listaLibros) {
+            if (libro.getTitulo().equalsIgnoreCase(titulo) && !libro.isEstado()) {
+                resultados.add(libro);
+            }
+        }
+        return resultados;
+    }
+
+    public ArrayList<Libro> buscarPorEditorial(String editorial) {
+        ArrayList<Libro> resultados = new ArrayList<>();
+        for (Libro libro : listaLibros) {
+            if (libro.getEditorial().equalsIgnoreCase(editorial) && !libro.isEstado()) {
+                resultados.add(libro);
+            }
+        }
+        return resultados;
+    }
+
+    public ArrayList<Libro> buscarPorAno(int ano) {
+        ArrayList<Libro> resultados = new ArrayList<>();
+        for (Libro libro : listaLibros) {
+            if (libro.getAno() == ano && !libro.isEstado()) {
+                resultados.add(libro);
+            }
+        }
+        return resultados;
+    }
+
+    public ArrayList<Libro> buscarPorGenero(String genero) {
+        ArrayList<Libro> resultados = new ArrayList<>();
+        for (Libro libro : listaLibros) {
+            if (libro.getGenero().equalsIgnoreCase(genero) && !libro.isEstado()) {
+                resultados.add(libro);
+            }
+        }
+        return resultados;
+    }
+
+    public ArrayList<Libro> buscarPorAutor(String autor) {
+        ArrayList<Libro> resultados = new ArrayList<>();
+        for (Libro libro : listaLibros) {
+            if (libro.getAutor().equalsIgnoreCase(autor) && !libro.isEstado()) {
+                resultados.add(libro);
+            }
+        }
+        return resultados;
+    }
+    
     public void eliminarLibro(Libro libro) {
         for (int i = 0; i < listaLibros.size(); i++) {
             if (listaLibros.get(i).getId() == libro.getId()) {

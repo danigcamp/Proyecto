@@ -14,7 +14,7 @@ public class FRM_About extends javax.swing.JFrame {
      * Creates new form FRM_About
      */
     public FRM_About() {
-           this.setUndecorated(true);
+        this.setUndecorated(true);
         initComponents();
         jTextPane2.setText("Acerca de la Aplicación del Sistema Transaccional\n"
                 + "Descripción General\n"
