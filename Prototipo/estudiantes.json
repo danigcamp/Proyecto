@@ -1,1 +1,72 @@
-[{"numero_Telefonico":1,"carnet":"1","Contrasena":"1","libros_Solicitados":1,"nombre":"tom"}]
+[
+  {
+    "numero_Telefonico": 98765432,
+    "carnet": "C12345",
+    "Contrasena": "A98765",
+    "libros_Solicitados": 3,
+    "nombre": "Juan"
+  },
+  {
+    "numero_Telefonico": 12345678,
+    "carnet": "C54321",
+    "Contrasena": "B12345",
+    "libros_Solicitados": 2,
+    "nombre": "Maria"
+  },
+  {
+    "numero_Telefonico": 23456789,
+    "carnet": "C67890",
+    "Contrasena": "C67890",
+    "libros_Solicitados": 4,
+    "nombre": "Pedro"
+  },
+  {
+    "numero_Telefonico": 34567890,
+    "carnet": "C13579",
+    "Contrasena": "D24680",
+    "libros_Solicitados": 1,
+    "nombre": "Luis"
+  },
+  {
+    "numero_Telefonico": 45678901,
+    "carnet": "C24680",
+    "Contrasena": "E13579",
+    "libros_Solicitados": 2,
+    "nombre": "Ana"
+  },
+  {
+    "numero_Telefonico": 56789012,
+    "carnet": "C98765",
+    "Contrasena": "F24680",
+    "libros_Solicitados": 3,
+    "nombre": "Sofia"
+  },
+  {
+    "numero_Telefonico": 67890123,
+    "carnet": "C35791",
+    "Contrasena": "G35791",
+    "libros_Solicitados": 1,
+    "nombre": "Carlos"
+  },
+  {
+    "numero_Telefonico": 78901234,
+    "carnet": "C57913",
+    "Contrasena": "H46802",
+    "libros_Solicitados": 2,
+    "nombre": "Laura"
+  },
+  {
+    "numero_Telefonico": 89012345,
+    "carnet": "C80246",
+    "Contrasena": "I57913",
+    "libros_Solicitados": 4,
+    "nombre": "Diego"
+  },
+  {
+    "numero_Telefonico": 90123456,
+    "carnet": "C01928",
+    "Contrasena": "J80246",
+    "libros_Solicitados": 3,
+    "nombre": "Elena"
+  }
+]

@@ -11,6 +11,7 @@ import ucr.ac.cr.vista.FRM_Estudiante;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import ucr.ac.cr.modelo.Login;
 
 /**
  *
@@ -22,8 +23,9 @@ public class Manejador_Estudiantes implements ActionListener {
     Estudiante e;
     FRM_Estudiante frmEstudiante;
     Registro_Estudiante rE;
-
-    public Manejador_Estudiantes(Manejador_Menu menu) {
+private Login login;
+    public Manejador_Estudiantes(Manejador_Menu menu, Login login) {
+        this.login = login;
         this.menu = menu;
         rE = new Registro_Estudiante();
         frmEstudiante = new FRM_Estudiante();
@@ -104,7 +106,7 @@ public class Manejador_Estudiantes implements ActionListener {
     private void salirDelSistema() {
         JOptionPane.showMessageDialog(null, "Saliendo del sistema...");
         frmEstudiante.dispose();
-        menu = new Manejador_Menu();
+        menu = new Manejador_Menu(login);
     }
 
     private void logic() {

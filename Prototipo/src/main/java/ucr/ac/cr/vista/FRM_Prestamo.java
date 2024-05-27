@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import ucr.ac.cr.controlador.Manejador_Prestamo_BusquedaLibro;
 import ucr.ac.cr.modelo.Libro;
+import ucr.ac.cr.modelo.Login;
 import ucr.ac.cr.modelo.Prestamo;
 import ucr.ac.cr.modelo.Registro_Prestamo;
 
@@ -24,16 +25,21 @@ public class FRM_Prestamo extends javax.swing.JFrame {
 
     private String dateSolicitado;
     private String dateEntrega;
-
+private Login login;
     /**
      * Creates new form FRM_Prestamo
      */
+    public FRM_Prestamo( Login login) {
+        this.login = login;
+        this.setUndecorated(true);
+        initComponents();
+        this.setLocationRelativeTo(null);
+    }
     public FRM_Prestamo() {
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
     }
-
     public void escuchadorMenu(ActionListener manejador) {
         agregar.addActionListener(manejador);
         modificar.addActionListener(manejador);
@@ -90,6 +96,8 @@ public class FRM_Prestamo extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jSolicitado = new javax.swing.JButton();
         jFechaEntrega = new javax.swing.JButton();
+        registroEstudiantes1 = new javax.swing.JLabel();
+        registroEstudiantes2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -153,14 +161,15 @@ public class FRM_Prestamo extends javax.swing.JFrame {
         });
         getContentPane().add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 43, -1));
 
+        txtCarnet.setEditable(false);
         txtCarnet.setBackground(new java.awt.Color(255, 204, 204));
         txtCarnet.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         getContentPane().add(txtCarnet, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 102, -1));
 
-        registroEstudiantes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        registroEstudiantes.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         registroEstudiantes.setForeground(new java.awt.Color(255, 153, 153));
-        registroEstudiantes.setText("Registro Prestamo");
-        getContentPane().add(registroEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, -1, -1));
+        registroEstudiantes.setText("Bibliotecarios eliminan por id");
+        getContentPane().add(registroEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, -1, -1));
 
         comboLibros.setBackground(new java.awt.Color(255, 204, 204));
         comboLibros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Opciones", "Selecionar libros" }));
@@ -194,6 +203,7 @@ public class FRM_Prestamo extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 810, 250));
 
         jSolicitado.setBackground(new java.awt.Color(255, 204, 204));
+        jSolicitado.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jSolicitado.setForeground(new java.awt.Color(0, 51, 51));
         jSolicitado.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccionar  fecha y hora"));
         jSolicitado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -202,9 +212,10 @@ public class FRM_Prestamo extends javax.swing.JFrame {
                 jSolicitadoActionPerformed(evt);
             }
         });
-        getContentPane().add(jSolicitado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 150, 30));
+        getContentPane().add(jSolicitado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 260, 30));
 
         jFechaEntrega.setBackground(new java.awt.Color(255, 204, 204));
+        jFechaEntrega.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jFechaEntrega.setForeground(new java.awt.Color(0, 51, 51));
         jFechaEntrega.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccionar  fecha y hora"));
         jFechaEntrega.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -213,7 +224,17 @@ public class FRM_Prestamo extends javax.swing.JFrame {
                 jFechaEntregaActionPerformed(evt);
             }
         });
-        getContentPane().add(jFechaEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 150, 30));
+        getContentPane().add(jFechaEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 260, 30));
+
+        registroEstudiantes1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        registroEstudiantes1.setForeground(new java.awt.Color(255, 153, 153));
+        registroEstudiantes1.setText("Registro Prestamo");
+        getContentPane().add(registroEstudiantes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, -1, -1));
+
+        registroEstudiantes2.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        registroEstudiantes2.setForeground(new java.awt.Color(255, 153, 153));
+        registroEstudiantes2.setText("Estudiantes eliminan por carnet");
+        getContentPane().add(registroEstudiantes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -250,7 +271,7 @@ public class FRM_Prestamo extends javax.swing.JFrame {
         // TODO add your handling code here:
         int selectedItem = comboLibros.getSelectedIndex();
         if (1 == (selectedItem)) {
-            new Manejador_Prestamo_BusquedaLibro();
+            new Manejador_Prestamo_BusquedaLibro(login);
             dispose();
         }
 
@@ -321,6 +342,8 @@ public class FRM_Prestamo extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JButton modificar;
     private javax.swing.JLabel registroEstudiantes;
+    private javax.swing.JLabel registroEstudiantes1;
+    private javax.swing.JLabel registroEstudiantes2;
     private javax.swing.JTextField txtCarnet;
     private javax.swing.JTextField txtId;
     // End of variables declaration//GEN-END:variables

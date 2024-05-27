@@ -10,10 +10,12 @@ import ucr.ac.cr.vista.FRM_Prestamo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import org.json.simple.parser.ParseException;
 import ucr.ac.cr.modelo.Libro;
+import ucr.ac.cr.modelo.Login;
 
 /**
  *
@@ -26,24 +28,38 @@ public class Manejador_Prestamos implements ActionListener {
     Prestamo p;
     FRM_Prestamo frmPrestamo;
     Registro_Prestamo rPrestamo;
+    private Login login;
 
-    public Manejador_Prestamos(Manejador_Menu menu) {
-        this.menu = menu;
+    public Manejador_Prestamos(Manejador_Menu menu, Login login) {
         rPrestamo = new Registro_Prestamo();
-        frmPrestamo = new FRM_Prestamo();
+        frmPrestamo = new FRM_Prestamo(login);
+        frmPrestamo.getTxtId().setText("" + rPrestamo.obtenerSiguienteId());
+        frmPrestamo.getTxtCarnet().setText("" + login.getCarnet());
+
+        this.login = login;
+        this.menu = menu;
+
         frmPrestamo.setVisible(true);
         frmPrestamo.escuchadorMenu(this);
         frmPrestamo.actualizarListaPrestamoATabla(rPrestamo);
+
     } //Fin de la clase 
 
-    public Manejador_Prestamos(Manejador_Menu menu, ArrayList<Libro> listaLibros) {
+    public Manejador_Prestamos(Manejador_Menu menu, ArrayList<Libro> listaLibros, Login login) {
+        this.login = login;
+        frmPrestamo = new FRM_Prestamo(login);
+        rPrestamo = new Registro_Prestamo();
+        frmPrestamo.getTxtId().setText("" + rPrestamo.obtenerSiguienteId());
+        frmPrestamo.getTxtCarnet().setText("" + login.getCarnet());
+
+        this.login = login;
         System.err.println("Entra");
         this.listaLibros = listaLibros;
         this.menu = menu;
-        rPrestamo = new Registro_Prestamo();
-        frmPrestamo = new FRM_Prestamo();
+
         frmPrestamo.setVisible(true);
         frmPrestamo.escuchadorMenu(this);
+        frmPrestamo.actualizarListaPrestamoATabla(rPrestamo);
         frmPrestamo.llenarComboLibros(listaLibros);
 
     } //Fin de la clase 
@@ -64,7 +80,7 @@ public class Manejador_Prestamos implements ActionListener {
                 break;
 
             case "Buscar":
-                if (menu.getManejador_Login().getL().getRol().equals("Estudiante")) {
+                if (login.getRol().equalsIgnoreCase("Estudiante")) {
                     buscarEstudiate();
                 } else {
                     buscarBibliotecario();
@@ -76,7 +92,7 @@ public class Manejador_Prestamos implements ActionListener {
                 salirDelSistema();
                 break;
         }
-
+        frmPrestamo.getTxtCarnet().setText("" + login.getCarnet());
     }
 
     private void agregar() {
@@ -86,11 +102,18 @@ public class Manejador_Prestamos implements ActionListener {
             JOptionPane.showMessageDialog(null, "Libro agregado: " + p.toString());
             frmPrestamo.actualizarListaPrestamoATabla(rPrestamo);
             limpiarTxt();
+            frmPrestamo.getTxtId().setText("" + rPrestamo.obtenerSiguienteId());
         }
     }
 
     private void modificar() {
-        if (validarCampos()) {
+        if (validarCampos() && login.getRol().equalsIgnoreCase("Estudiante") && p.getCarnet() == login.getCarnet()) {
+            logic();
+            rPrestamo.modificarPrestamo(p);
+            JOptionPane.showMessageDialog(null, "Libro modificado: " + p.toString());
+            frmPrestamo.actualizarListaPrestamoATabla(rPrestamo);
+            limpiarTxt();
+        } else if (validarCampos() && login.getRol().equalsIgnoreCase("Bibliotecario")) {
             logic();
             rPrestamo.modificarPrestamo(p);
             JOptionPane.showMessageDialog(null, "Libro modificado: " + p.toString());
@@ -100,38 +123,41 @@ public class Manejador_Prestamos implements ActionListener {
     }
 
     private void eliminar() {
-        if (validarCampos()) {
+
+        if (!p.getCarnet().isEmpty() && login.getRol().equalsIgnoreCase("Estudiante") && p.getCarnet() == login.getCarnet()) {
             logic();
             rPrestamo.eliminarPrestamo(p);
             frmPrestamo.actualizarListaPrestamoATabla(rPrestamo);
             limpiarTxt();
+            frmPrestamo.getTxtId().setText("" + rPrestamo.obtenerSiguienteId());
+        } else if (!p.getCarnet().isEmpty() && login.getRol().equalsIgnoreCase("Bibliotecario")) {
+            logic();
+            rPrestamo.eliminarPrestamo(p);
+            frmPrestamo.actualizarListaPrestamoATabla(rPrestamo);
+            limpiarTxt();
+            frmPrestamo.getTxtId().setText("" + rPrestamo.obtenerSiguienteId());
         }
+
     }
 
     private void buscarEstudiate() {
         if (!frmPrestamo.getTxtCarnet().getText().isEmpty()) {
-
             this.p = rPrestamo.buscarPrestamoEstudiante(frmPrestamo.getTxtCarnet().getText());
             if (p != null) {
                 frmPrestamo.getTxtId().setText(String.valueOf(p.getId()));
                 frmPrestamo.getTxtCarnet().setText(p.getCarnet());
 
-                //hacer logica para guardar los libros del combo
-                //hacer paseo de fechas
             }
         }
     }
 
     private void buscarBibliotecario() {
         if (!frmPrestamo.getTxtCarnet().getText().isEmpty()) {
-
-            this.p = rPrestamo.buscarPrestamoEstudiante(frmPrestamo.getTxtCarnet().getText());
+            this.p = rPrestamo.buscarPrestamoBibliotecario(Integer.parseInt(frmPrestamo.getTxtId().getText()));
             if (p != null) {
                 frmPrestamo.getTxtId().setText(String.valueOf(p.getId()));
                 frmPrestamo.getTxtCarnet().setText(p.getCarnet());
 
-                //hacer logica para guardar los libros del combo
-                //hacer paseo de fechas
             }
         }
     }
@@ -139,28 +165,36 @@ public class Manejador_Prestamos implements ActionListener {
     private void salirDelSistema() {
         JOptionPane.showMessageDialog(null, "Saliendo del sistema...");
         frmPrestamo.dispose();
-        menu = new Manejador_Menu();
+        menu = new Manejador_Menu(login);
     }
 
     private void logic() {
-//  public Prestamo(int id, String carnet, int libro_Solicitidos, LocalDate fecha_Inicio, LocalDate fecha_fin)
-        String libros = "";
+
+        String fechaSolicitadoTexto = frmPrestamo.getjSolicitado().getText();
+
+        DateTimeFormatter formatterSolicitado = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        LocalDate fechaSolicitado = LocalDate.parse(fechaSolicitadoTexto, formatterSolicitado);
+
+        String fechaEntregaTexto = frmPrestamo.getjFechaEntrega().getText();
+
+        DateTimeFormatter formatterEntrega = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        LocalDate fechaEntrega = LocalDate.parse(fechaEntregaTexto, formatterEntrega);
 
         this.p = new Prestamo(
                 Integer.parseInt(frmPrestamo.getTxtId().getText()),
                 frmPrestamo.getTxtCarnet().getText(),
                 listaLibros,
-                LocalDate.parse(frmPrestamo.getjSolicitado().getText()),
-                LocalDate.parse(frmPrestamo.getjFechaEntrega().getText())
+                fechaSolicitado,
+                fechaEntrega
         );
     }
 
     private boolean validarCampos() {
-
+        System.err.println("sixe" + frmPrestamo.getComboLibros().getItemCount());
         if (frmPrestamo.getTxtCarnet().getText().isEmpty() || frmPrestamo.getTxtId().getText().isEmpty()
-                || listaLibros.isEmpty() || frmPrestamo.getjFechaEntrega().getText().isEmpty()
+                || frmPrestamo.getjFechaEntrega().getText().isEmpty()
                 || frmPrestamo.getjSolicitado().getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos.");
+            JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos y escoja los libros despectivos.");
             return false;
         }
         return true;

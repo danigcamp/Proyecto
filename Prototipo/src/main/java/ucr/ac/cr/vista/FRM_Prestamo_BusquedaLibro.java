@@ -17,6 +17,8 @@ import javax.swing.JRootPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import ucr.ac.cr.modelo.Prestamo;
+import ucr.ac.cr.modelo.Registro_Prestamo;
 
 /**
  *
@@ -295,6 +297,29 @@ public class FRM_Prestamo_BusquedaLibro extends javax.swing.JFrame {
         limpiar.addActionListener(manejador);
     } //Fin del metodo 
 
+      public void actualizarListaLibroATabla(Registro_Libro registroLibro) {
+        DefaultTableModel modeloTabla = (DefaultTableModel) jTable2.getModel();
+
+        if (registroLibro.getListaLibros().isEmpty()) {
+            modeloTabla.setRowCount(0); // Limpiar la tabla
+        } else {
+            modeloTabla.setRowCount(0); // Limpiar la tabla antes de agregar nuevos libros
+
+            for (Libro libro : registroLibro.getListaLibros()) {
+                Object[] fila = {
+                    libro.getId(),
+                    libro.getTitulo(),
+                    libro.getEditorial(),
+                    libro.getAno(),
+                    libro.getGenero(),
+                    libro.getAutor(),
+                    (boolean) libro.isEstado()
+                };
+                modeloTabla.addRow(fila);
+            }
+        }
+    }
+    
     public void actualizarListaLibroATablaID(Libro libro) {
         DefaultTableModel modeloTabla = (DefaultTableModel) jTable2.getModel();
 

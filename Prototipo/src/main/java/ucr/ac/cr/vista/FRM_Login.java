@@ -85,7 +85,7 @@ public class FRM_Login extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 102, 102));
-        jLabel4.setText("Usuario");
+        jLabel4.setText("Carnet");
 
         jEntrar.setBackground(new java.awt.Color(204, 255, 204));
         jEntrar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N

@@ -3,15 +3,19 @@ ucr\ac\cr\modelo\Registro_Libro.class
 ucr\ac\cr\vista\FRM_Libros$2.class
 ucr\ac\cr\vista\FRM_Prestamo$4.class
 ucr\ac\cr\vista\FRM_Prestamo_BusquedaLibro$3.class
+ucr\ac\cr\vista\FRM_Reporte$4.class
 ucr\ac\cr\vista\FRM_Reporte.class
 ucr\ac\cr\controlador\Manejador_Prestamos.class
 ucr\ac\cr\vista\FRM_About.class
+ucr\ac\cr\vista\FRM_Menu$3.class
 ucr\ac\cr\modelo\Registro_Prestamo.class
 ucr\ac\cr\vista\FRM_Prestamo$7.class
 ucr\ac\cr\modelo\Login.class
 ucr\ac\cr\vista\FRM_Libros$1.class
 ucr\ac\cr\vista\FRM_Prestamo$3.class
+ucr\ac\cr\vista\FRM_Menu$4.class
 ucr\ac\cr\vista\FRM_About$1.class
+ucr\ac\cr\vista\FRM_Reporte$3.class
 ucr\ac\cr\controlador\Manejador_Login.class
 ucr\ac\cr\vista\FRM_Prestamo_BusquedaLibro$2.class
 ucr\ac\cr\Main.class
@@ -32,6 +36,7 @@ ucr\ac\cr\modelo\Libro.class
 ucr\ac\cr\vista\FRM_Menu$1.class
 ucr\ac\cr\vista\FRM_Libros$4.class
 ucr\ac\cr\vista\FRM_Prestamo_BusquedaLibro$4.class
+ucr\ac\cr\controlador\Manejador_Reporte.class
 ucr\ac\cr\modelo\Prestamo.class
 ucr\ac\cr\vista\FRM_About$2.class
 ucr\ac\cr\modelo\Estudiante.class

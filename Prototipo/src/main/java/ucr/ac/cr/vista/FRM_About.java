@@ -16,27 +16,13 @@ public class FRM_About extends javax.swing.JFrame {
     public FRM_About() {
         this.setUndecorated(true);
         initComponents();
-        jTextPane2.setText("Acerca de la Aplicación del Sistema Transaccional\n"
-                + "Descripción General\n"
-                + "La Aplicación del Sistema Transaccional es una solución informática desarrollada por un grupo de cuatro estudiantes de la Universidad de Costa Rica, Sede Regional del Pacífico, como parte del programa de Informática Empresarial. Esta aplicación tiene como objetivo abordar y optimizar los procesos transaccionales utilizando técnicas avanzadas de programación y principios de diseño centrados en el usuario.\n"
-                + "\n"
-                + "Características Principales\n"
-                + "Registro y Administración de Usuarios: Un módulo robusto que permite a los usuarios registrarse, iniciar sesión y gestionar sus perfiles de manera segura.\n"
-                + "Gestión de Datos: Herramientas completas para registrar, validar y almacenar datos transaccionales de forma permanente, utilizando archivos JSON para una gestión eficiente de datos.\n"
-                + "Informes y Análisis: Generación de informes detallados y análisis a través de tablas dinámicas con capacidades de filtrado, proporcionando valiosas visualizaciones e insights de datos.\n"
-                + "Interfaz Gráfica de Usuario: Una interfaz intuitiva y estéticamente agradable diseñada para mejorar la experiencia y accesibilidad del usuario.\n"
-                + "Manejo de Eventos: Componentes responsivos que gestionan de manera eficaz las interacciones y eventos del usuario, asegurando una experiencia fluida e interactiva.\n"
-                + "Herramientas de Desarrollo y Estándares\n"
-                + "Lenguaje de Programación: Java\n"
-                + "Gestión de Proyectos: Maven\n"
-                + "Entorno de Desarrollo Integrado (IDE): Apache NetBeans\n"
-                + "Control de Versiones: GitHub, con un mínimo de 5 commits significativos\n"
-                + "Diseño y Arquitectura: Principios de programación orientada a objetos, incluyendo herencia, polimorfismo y el uso de clases abstractas.\n"
-                + "Objetivos\n"
-                + "Demostrar Competencias: Aplicar conocimientos teóricos en un contexto práctico para mostrar habilidades y competencias en programación.\n"
-                + "Integrar Conocimientos: Combinar elementos lógicos y estéticos para desarrollar una aplicación funcional y visualmente atractiva.\n"
-                + "Fomentar el Autoaprendizaje: Promover la capacidad de aprender de manera independiente a través de la investigación y la resolución de problemas.\n"
-                + "Innovar Soluciones: Desarrollar un sistema innovador que aborde problemas del mundo real a través de una programación eficaz.");
+        jTextPane2.setText("Daniela Garcia Campos C23120\n" +
+"Jose Alejandro Garita Monge C23193\n" +
+"Sara Benavides Murillo C31089\n" +
+"\n" +
+"El proyecto significa para el equipo una idea innovadora para optimizar las transacciones de la Biblioteca, es una herramienta informática que facilita tanto el acceso como la administración de los recursos que la misma ofrece, en ámbitos como la mejora de la gestión Bibliotecarias, incluyendo aspectos como la eficiencia en el control de inventario y en la automatización de procesos, la facilitación del acceso a la información, así como obtener información actualizada y que esta incluya una búsqueda rápida y precisa\n" +
+"\n" +
+"La principal razón de la creación del proyecto es cómo este sistema transaccional va a mejorar notablemente la vida de los estudiantes y de los bibliotecarios, los estudiantes van a tener el beneficio de obtener un acceso más eficientes a los recursos educativos y así mejorar su rendimiento académico, la posibilidad de buscar libros en línea ahorrará tiempo a los estudiantes y además creará un mayor interés en la búsqueda de libros para su desarrollo personal y académico. También el personal bibliotecario se verá beneficiado ya que el proyecto hará que se reduzca la carga de trabajo y facilitará la planificación y la toma de decisiones.");
 
         this.setSize(560, 360);
         this.setLocationRelativeTo(null);

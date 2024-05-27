@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import ucr.ac.cr.modelo.Libro;
+import ucr.ac.cr.modelo.Login;
 import ucr.ac.cr.modelo.Registro_Libro;
 import ucr.ac.cr.vista.FRM_Prestamo_BusquedaLibro;
 
@@ -29,13 +30,15 @@ public class Manejador_Prestamo_BusquedaLibro implements ActionListener {
     private final int ANO = 2;
     private final int GENERO = 3;
     private final int AUTOR = 4;
-
-    public Manejador_Prestamo_BusquedaLibro() {
+private Login login;
+    public Manejador_Prestamo_BusquedaLibro(Login login) {
         this.menu = menu;
+        this.login = login;
         registro_Libro = new Registro_Libro();
         frmPrestamos = new FRM_Prestamo_BusquedaLibro();
         frmPrestamos.setVisible(true);
         frmPrestamos.escuchadorMenu(this);
+        frmPrestamos.actualizarListaLibroATabla(registro_Libro);
     }
 
     @Override
@@ -64,6 +67,7 @@ public class Manejador_Prestamo_BusquedaLibro implements ActionListener {
     }
 
     private void limpiar() {
+
         frmPrestamos.getTxtID().setText("");
         frmPrestamos.getTxtAutor().setText("");
         frmPrestamos.getTxtEditorial().setText("");
@@ -71,9 +75,11 @@ public class Manejador_Prestamo_BusquedaLibro implements ActionListener {
         frmPrestamos.getTxtTitulo().setText("");
         frmPrestamos.getTxtAno().setText("");
         frmPrestamos.limpiarTabla();
+        frmPrestamos.actualizarListaLibroATabla(registro_Libro);
     }
 
     private void agregarLibro() {
+        frmPrestamos.actualizarListaLibroATabla(registro_Libro);
         if (!frmPrestamos.getTxtID().getText().isEmpty()) {
             libro = registro_Libro.buscarLibro(Integer.parseInt(frmPrestamos.getTxtID().getText()));
             boolean estado = libro.isEstado();
@@ -136,7 +142,7 @@ public class Manejador_Prestamo_BusquedaLibro implements ActionListener {
 
     private void salirDelSistema() {
         if (listaLibrosPrestados != null) {
-            new Manejador_Prestamos(menu, listaLibrosPrestados);
+            new Manejador_Prestamos(menu, listaLibrosPrestados, login);
             frmPrestamos.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Debe agregar almenos un libro");

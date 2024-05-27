@@ -6,6 +6,7 @@ package ucr.ac.cr.vista;
 
 import java.awt.event.ActionListener;
 import javax.swing.JLabel;
+import ucr.ac.cr.controlador.Manejador_Login;
 
 /**
  *
@@ -41,6 +42,7 @@ public class FRM_Menu extends javax.swing.JFrame {
         jmiRegistroPrestamos.addActionListener(manejador);
         jmiRegistroBibliotecario.addActionListener(manejador);
         jmiSalir.addActionListener(manejador);
+        jButton1.addActionListener(manejador);
     } //Fin del metodo 
 
     public JLabel getjRol() {
@@ -65,6 +67,8 @@ public class FRM_Menu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jRol = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jRol1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jmiRegistroLibros = new javax.swing.JMenuItem();
@@ -76,6 +80,7 @@ public class FRM_Menu extends javax.swing.JFrame {
         jmiSalir2 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jmiSalir1 = new javax.swing.JMenuItem();
+        jmiSalir3 = new javax.swing.JMenuItem();
         jmiSalir = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
@@ -88,12 +93,28 @@ public class FRM_Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jRol.setFont(new java.awt.Font("Lucida Console", 0, 48)); // NOI18N
-        jRol.setForeground(new java.awt.Color(255, 204, 204));
+        jRol.setFont(new java.awt.Font("Lucida Calligraphy", 0, 36)); // NOI18N
+        jRol.setForeground(new java.awt.Color(255, 51, 102));
 
         jLabel3.setFont(new java.awt.Font("Lucida Handwriting", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 153, 153));
         jLabel3.setText("BIBLIOTECA UNIVERSITARIA");
+
+        jButton1.setBackground(new java.awt.Color(255, 204, 204));
+        jButton1.setFont(new java.awt.Font("Lucida Calligraphy", 0, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("¡Solicita tu Libro Ahora!");
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jRol1.setFont(new java.awt.Font("Lucida Calligraphy", 0, 24)); // NOI18N
+        jRol1.setForeground(new java.awt.Color(255, 51, 102));
+        jRol1.setText("Rol:");
 
         jMenu3.setText("Registrar datos");
         jMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -147,6 +168,15 @@ public class FRM_Menu extends javax.swing.JFrame {
         });
         jMenu4.add(jmiSalir1);
 
+        jmiSalir3.setText("Cerrar sesion");
+        jmiSalir3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jmiSalir3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiSalir3ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jmiSalir3);
+
         jmiSalir.setText("Salir");
         jmiSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu4.add(jmiSalir);
@@ -160,26 +190,32 @@ public class FRM_Menu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jRol, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(95, Short.MAX_VALUE)
-                    .addComponent(jLabel3)
-                    .addGap(67, 67, 67)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jRol1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jRol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(213, Short.MAX_VALUE)
-                .addComponent(jRol, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(131, Short.MAX_VALUE)
-                    .addComponent(jLabel3)
-                    .addGap(121, 121, 121)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRol1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRol, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44))
         );
 
         pack();
@@ -195,11 +231,23 @@ public class FRM_Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jmiSalir2ActionPerformed
 
+    private void jmiSalir3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSalir3ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new Manejador_Login();
+    }//GEN-LAST:event_jmiSalir3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
@@ -210,6 +258,7 @@ public class FRM_Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel jRol;
+    private javax.swing.JLabel jRol1;
     private javax.swing.JMenuItem jmiRegistroBibliotecario;
     private javax.swing.JMenuItem jmiRegistroEstudiantes;
     private javax.swing.JMenuItem jmiRegistroLibros;
@@ -217,5 +266,6 @@ public class FRM_Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiSalir;
     private javax.swing.JMenuItem jmiSalir1;
     private javax.swing.JMenuItem jmiSalir2;
+    private javax.swing.JMenuItem jmiSalir3;
     // End of variables declaration//GEN-END:variables
 } //Fin de la clase 

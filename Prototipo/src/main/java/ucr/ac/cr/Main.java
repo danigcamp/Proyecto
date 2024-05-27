@@ -16,6 +16,6 @@ public class Main
 {
     public static void main(String[] args) 
     {
-        new Manejador_Menu(); 
+       new Manejador_Login(); 
     }
 } //Fin de la clase 

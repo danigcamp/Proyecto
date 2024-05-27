@@ -18,9 +18,10 @@ public class Manejador_Menu implements ActionListener {
 
     private FRM_Menu frmMenu;
     private Manejador_Login manejador_Login;
+    private Login login;
 
     public Manejador_Menu(Manejador_Login manejador_Login, Login login) {
-
+        this.login = login;
         this.manejador_Login = manejador_Login;
         frmMenu = new FRM_Menu(login.getRol());
         frmMenu.getjRol().setText(login.getRol());
@@ -29,8 +30,10 @@ public class Manejador_Menu implements ActionListener {
 
     } //Fin del metodo 
 
-    public Manejador_Menu() {
-        frmMenu = new FRM_Menu();
+    public Manejador_Menu(Login login) {
+        this.login = login;
+        frmMenu = new FRM_Menu(login.getRol());
+        frmMenu.getjRol().setText(login.getRol());
         frmMenu.setVisible(true);
         frmMenu.escuchadorMenu(this);
     } //Fin del metodo 
@@ -38,23 +41,49 @@ public class Manejador_Menu implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand().toString()) {
             case "Registro Estudiantes":
-                new Manejador_Login();
-                frmMenu.dispose();
+                if (login.getRol().equals("Bibliotecario")) {
+                    new Manejador_Estudiantes(this, login);
+                    frmMenu.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Acesso solo para bibliotecarios");
+                }
                 break;
 
             case "Registro Libros":
-                new Manejador_Libros(this);
-                frmMenu.dispose();
+                if (login.getRol().equals("Bibliotecario")) {
+                    new Manejador_Libros(this, login);
+                    frmMenu.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Acesso solo para bibliotecarios");
+                }
+
                 break;
 
             case "Registro Prestamos":
-                new Manejador_Prestamos(this);
+
+                new Manejador_Prestamos(this, login);
                 frmMenu.dispose();
                 break;
 
             case "Registro Bibliotecarios":
-                new Manejador_Login();
+                if (login.getRol().equals("Bibliotecario")) {
+                    new Manejador_Bibliotecario(this, login);
+                    frmMenu.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Acesso solo para bibliotecarios");
+                }
+
+                break;
+            case "¡Solicita tu Libro Ahora!":
+
+                new Manejador_Prestamos(this, login);
                 frmMenu.dispose();
+                break;
+            case "Generar reporte":
+
+                new Manejador_Reporte(this, login);
+                frmMenu.dispose();
+
                 break;
 
             case "Salir":

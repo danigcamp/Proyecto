@@ -183,6 +183,19 @@ public class Registro_Libro {
 
     return listaLibros;
 }
+   public int obtenerUltimoId() {
+        int ultimoId = 0;
+        for (Libro libro : listaLibros) {
+            if (libro.getId() > ultimoId) {
+                ultimoId = libro.getId();
+            }
+        }
+        return ultimoId;
+    }
 
+    public int obtenerSiguienteId() {
+        int ultimoId = obtenerUltimoId();
+        return ultimoId + 1;
+    }
 
 }

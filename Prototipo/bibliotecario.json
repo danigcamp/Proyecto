@@ -1,1 +1,71 @@
-[{"apellidos":"lopez","carnet":"1","celular":1,"contrasena":"1","nombre":"Bibliotecario"}]
+[{"apellidos":"Garcia","carnet":"C23120","celular":87557396 ,"contrasena":"1701","nombre":"Daniela"},
+    {
+    "apellidos": "Lopez",
+    "carnet": "C12345",
+    "celular": 98765432,
+    "contrasena": "A98765",
+    "nombre": "Juan"
+  },
+  {
+    "apellidos": "Martinez",
+    "carnet": "C54321",
+    "celular": 12345678,
+    "contrasena": "B12345",
+    "nombre": "Maria"
+  },
+  {
+    "apellidos": "Gonzalez",
+    "carnet": "C67890",
+    "celular": 23456789,
+    "contrasena": "C67890",
+    "nombre": "Pedro"
+  },
+  {
+    "apellidos": "Hernandez",
+    "carnet": "C13579",
+    "celular": 34567890,
+    "contrasena": "D24680",
+    "nombre": "Luis"
+  },
+  {
+    "apellidos": "Perez",
+    "carnet": "C24680",
+    "celular": 45678901,
+    "contrasena": "E13579",
+    "nombre": "Ana"
+  },
+  {
+    "apellidos": "Rodriguez",
+    "carnet": "C98765",
+    "celular": 56789012,
+    "contrasena": "F24680",
+    "nombre": "Sofia"
+  },
+  {
+    "apellidos": "Sanchez",
+    "carnet": "C35791",
+    "celular": 67890123,
+    "contrasena": "G35791",
+    "nombre": "Carlos"
+  },
+  {
+    "apellidos": "Gutierrez",
+    "carnet": "C57913",
+    "celular": 78901234,
+    "contrasena": "H46802",
+    "nombre": "Laura"
+  },
+  {
+    "apellidos": "Ramirez",
+    "carnet": "C80246",
+    "celular": 89012345,
+    "contrasena": "I57913",
+    "nombre": "Diego"
+  },
+  {
+    "apellidos": "Torres",
+    "carnet": "C01928",
+    "celular": 90123456,
+    "contrasena": "J80246",
+    "nombre": "Elena"
+  }]

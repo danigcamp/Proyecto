@@ -4,6 +4,13 @@
  */
 package ucr.ac.cr.vista;
 
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import ucr.ac.cr.modelo.Login;
+
 /**
  *
  * @author danig
@@ -14,9 +21,24 @@ public class FRM_Reporte extends javax.swing.JFrame {
      * Creates new form FRM_Reporte
      */
     public FRM_Reporte() {
-        
+
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+
+    public void escuchadorMenu(ActionListener manejador) {
+        rLogins.addActionListener(manejador);
+        rPrestamos.addActionListener(manejador);
+        btnSalir.addActionListener(manejador);
+
+    } //Fin del metodo 
+
+    public JTextField getTxtCarnet() {
+        return txtCarnet;
+    }
+
+    public void setTxtCarnet(JTextField txtCarnet) {
+        this.txtCarnet = txtCarnet;
     }
 
     /**
@@ -31,58 +53,91 @@ public class FRM_Reporte extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblReporte = new javax.swing.JTable();
         btnSalir = new javax.swing.JButton();
+        registroEstudiantes1 = new javax.swing.JLabel();
+        rPrestamos = new javax.swing.JButton();
+        rLogins = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        txtCarnet = new javax.swing.JTextField();
+        registroEstudiantes2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblReporte.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(tblReporte);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 1050, 530));
+
         btnSalir.setBackground(new java.awt.Color(255, 153, 153));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnSalir.setText("Salir ");
+        btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 580, 120, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        registroEstudiantes1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        registroEstudiantes1.setForeground(new java.awt.Color(255, 153, 153));
+        registroEstudiantes1.setText("Los estudiantes solo ven los el reporte de  libros que del prestamo que solicitaron");
+        getContentPane().add(registroEstudiantes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 400, 40));
+
+        rPrestamos.setBackground(new java.awt.Color(204, 255, 204));
+        rPrestamos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        rPrestamos.setText("Reporte de prestamos");
+        rPrestamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rPrestamosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(rPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 580, -1, 30));
+
+        rLogins.setBackground(new java.awt.Color(204, 255, 204));
+        rLogins.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        rLogins.setText("Reporte de logins");
+        rLogins.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rLoginsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(rLogins, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 580, -1, 30));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel4.setText("Carnet");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, -1, -1));
+
+        txtCarnet.setBackground(new java.awt.Color(255, 204, 204));
+        txtCarnet.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        getContentPane().add(txtCarnet, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 580, 102, -1));
+
+        registroEstudiantes2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        registroEstudiantes2.setForeground(new java.awt.Color(255, 153, 153));
+        registroEstudiantes2.setText("Registros ");
+        getContentPane().add(registroEstudiantes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 120, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        this.dispose();
+    
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void rPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rPrestamosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rPrestamosActionPerformed
+
+    private void rLoginsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rLoginsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rLoginsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,9 +174,81 @@ public class FRM_Reporte extends javax.swing.JFrame {
         });
     }
 
+    public void llenarTablaConLogins(ArrayList<Login> logins) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Carnet");
+        modelo.addColumn("Contraseña");
+        modelo.addColumn("Rol");
+
+        for (Login login : logins) {
+            modelo.addRow(new Object[]{login.getCarnet(), login.getContrasena(), login.getRol()});
+        }
+
+        tblReporte.setModel(modelo);
+    }
+
+ public void llenarTablaConReporte(String reporte) {
+    DefaultTableModel modelo = new DefaultTableModel();
+    modelo.addColumn("ID");
+    modelo.addColumn("Fecha de inicio");
+    modelo.addColumn("Fecha de fin");
+    modelo.addColumn("Libros solicitados");
+
+    // Obtener las líneas del reporte divididas por saltos de línea
+    String[] lineasReporte = reporte.split("\n");
+
+    String id = "";
+    String fechaInicio = "";
+    String fechaFin = "";
+    StringBuilder librosSolicitados = new StringBuilder();
+
+    for (String linea : lineasReporte) {
+        // Eliminar espacios en blanco al principio y al final de la línea
+        linea = linea.trim();
+
+        if (linea.startsWith("ID:")) {
+            // Si encontramos una línea que comienza con "ID:", procesamos los campos anteriores
+            if (!id.isEmpty()) {
+                // Agregar la entrada anterior a la tabla
+                modelo.addRow(new Object[]{id, fechaInicio, fechaFin, librosSolicitados.toString().trim()});
+                // Reiniciar los campos para la nueva entrada
+                librosSolicitados = new StringBuilder();
+            }
+
+            // Obtener el ID de la línea
+            id = linea.substring(4).trim();
+        } else if (linea.startsWith("Fecha de inicio:")) {
+            // Obtener la fecha de inicio
+            fechaInicio = linea.substring(15).trim();
+        } else if (linea.startsWith("Fecha de fin:")) {
+            // Obtener la fecha de fin
+            fechaFin = linea.substring(12).trim();
+        } else if (linea.startsWith("- Título:")) {
+            // Si la línea comienza con "- Título:", es parte de la lista de libros solicitados
+            librosSolicitados.append(linea).append("\n");
+        }
+    }
+
+    // Agregar la última entrada del reporte
+    if (!id.isEmpty()) {
+        modelo.addRow(new Object[]{id, fechaInicio, fechaFin, librosSolicitados.toString().trim()});
+    }
+
+    tblReporte.setModel(modelo);
+}
+
+
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalir;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton rLogins;
+    private javax.swing.JButton rPrestamos;
+    private javax.swing.JLabel registroEstudiantes1;
+    private javax.swing.JLabel registroEstudiantes2;
     private javax.swing.JTable tblReporte;
+    private javax.swing.JTextField txtCarnet;
     // End of variables declaration//GEN-END:variables
 }

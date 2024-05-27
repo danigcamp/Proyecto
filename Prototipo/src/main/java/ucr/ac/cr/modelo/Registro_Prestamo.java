@@ -177,5 +177,64 @@ public class Registro_Prestamo {
 
         return listaPrestamos;
     }
+    
+        public int obtenerUltimoId() {
+        int ultimoId = 0;
+        for (Prestamo prestamo : listaPrestamos) {
+            if (prestamo.getId() > ultimoId) {
+                ultimoId = prestamo.getId();
+            }
+        }
+        return ultimoId;
+    }
 
+    public int obtenerSiguienteId() {
+        return obtenerUltimoId() + 1;
+    }
+   public String generarReportePorCarnet(String carnet) {
+        StringBuilder reporte = new StringBuilder();
+        reporte.append("Reporte de préstamos para el carnet: ").append(carnet).append("\n");
+
+        for (Prestamo prestamo : listaPrestamos) {
+            if (prestamo.getCarnet().equals(carnet)) {
+                reporte.append("ID: ").append(prestamo.getId()).append("\n");
+                reporte.append("Fecha de inicio: ").append(prestamo.getFecha_Inicio()).append("\n");
+                reporte.append("Fecha de fin: ").append(prestamo.getFecha_fin()).append("\n");
+                reporte.append("Libros solicitados:\n");
+
+                for (Libro libro : prestamo.getLibro_Solicitidos()) {
+                    reporte.append("\t- Título: ").append(libro.getTitulo()).append("\n");
+                    reporte.append("\t  Editorial: ").append(libro.getEditorial()).append("\n");
+                    reporte.append("\t  Año: ").append(libro.getAno()).append("\n");
+                    reporte.append("\t  Género: ").append(libro.getGenero()).append("\n");
+                    reporte.append("\t  Autor: ").append(libro.getAutor()).append("\n");
+                    reporte.append("\t  Estado: ").append(libro.isEstado() ? "Disponible" : "No disponible").append("\n\n");
+                }
+            }
+        }
+        return reporte.toString();
+    }
+
+    public String generarReporteTodosPrestamos() {
+        StringBuilder reporte = new StringBuilder();
+        reporte.append("Reporte de todos los préstamos:\n");
+
+        for (Prestamo prestamo : listaPrestamos) {
+            reporte.append("ID: ").append(prestamo.getId()).append("\n");
+            reporte.append("Carnet: ").append(prestamo.getCarnet()).append("\n");
+            reporte.append("Fecha de inicio: ").append(prestamo.getFecha_Inicio()).append("\n");
+            reporte.append("Fecha de fin: ").append(prestamo.getFecha_fin()).append("\n");
+            reporte.append("Libros solicitados:\n");
+
+            for (Libro libro : prestamo.getLibro_Solicitidos()) {
+                reporte.append("\t- Título: ").append(libro.getTitulo()).append("\n");
+                reporte.append("\t  Editorial: ").append(libro.getEditorial()).append("\n");
+                reporte.append("\t  Año: ").append(libro.getAno()).append("\n");
+                reporte.append("\t  Género: ").append(libro.getGenero()).append("\n");
+                reporte.append("\t  Autor: ").append(libro.getAutor()).append("\n");
+                reporte.append("\t  Estado: ").append(libro.isEstado() ? "Disponible" : "No disponible").append("\n\n");
+            }
+        }
+        return reporte.toString();
+    }
 }
