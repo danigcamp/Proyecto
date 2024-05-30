@@ -17,10 +17,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author danig
- */
 public class FRM_Libros extends javax.swing.JFrame {
 
     /**
