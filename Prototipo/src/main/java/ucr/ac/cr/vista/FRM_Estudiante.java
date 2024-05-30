@@ -13,10 +13,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author danig
- */
 public class FRM_Estudiante extends javax.swing.JFrame {
 
     /**
