@@ -14,10 +14,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-/**
- *
- * @author danig
- */
 public class Registro_Estudiante {
 
     private String filePath = "estudiantes.json";
