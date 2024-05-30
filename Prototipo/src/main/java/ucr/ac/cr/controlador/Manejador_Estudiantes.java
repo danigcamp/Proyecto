@@ -13,10 +13,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import ucr.ac.cr.modelo.Login;
 
-/**
- *
- * @author danig
- */
 public class Manejador_Estudiantes implements ActionListener {
 
     private Manejador_Menu menu;
