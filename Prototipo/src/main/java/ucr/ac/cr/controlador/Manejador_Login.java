@@ -11,10 +11,6 @@ import javax.swing.JOptionPane;
 import ucr.ac.cr.modelo.Login;
 import ucr.ac.cr.modelo.Registro_Login;
 
-/**
- *
- * @author danig
- */
 public class Manejador_Login implements ActionListener {
 
     private Login l;
