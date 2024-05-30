@@ -17,10 +17,6 @@ import ucr.ac.cr.modelo.Login;
 import ucr.ac.cr.modelo.Prestamo;
 import ucr.ac.cr.modelo.Registro_Prestamo;
 
-/**
- *
- * @author danig
- */
 public class FRM_Prestamo extends javax.swing.JFrame {
 
     private String dateSolicitado;
