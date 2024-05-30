@@ -140,7 +140,6 @@ public class Manejador_Bibliotecario implements ActionListener {
         frmBibliotecario.getTxtCelular().setText("");
         frmBibliotecario.getTxtCarnet().setText("");
         frmBibliotecario.getjContrasena().setText("");
-
     }
 
 } //Fin de la clase 
