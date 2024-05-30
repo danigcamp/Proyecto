@@ -8,10 +8,6 @@ import java.awt.List;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-/**
- *
- * @author danig
- */
 public class Prestamo {
 
     private int id;
