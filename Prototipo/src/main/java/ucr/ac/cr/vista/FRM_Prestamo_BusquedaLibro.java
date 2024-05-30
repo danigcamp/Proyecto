@@ -20,10 +20,6 @@ import javax.swing.table.DefaultTableModel;
 import ucr.ac.cr.modelo.Prestamo;
 import ucr.ac.cr.modelo.Registro_Prestamo;
 
-/**
- *
- * @author danig
- */
 public class FRM_Prestamo_BusquedaLibro extends javax.swing.JFrame {
 
     private Registro_Libro registro_Libro;
