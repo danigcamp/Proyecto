@@ -13,10 +13,6 @@ import ucr.ac.cr.modelo.Login;
 import ucr.ac.cr.modelo.Registro_Libro;
 import ucr.ac.cr.vista.FRM_Prestamo_BusquedaLibro;
 
-/**
- *
- * @author anton
- */
 public class Manejador_Prestamo_BusquedaLibro implements ActionListener {
 
     private Manejador_Menu menu;
