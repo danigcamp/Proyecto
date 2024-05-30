@@ -8,10 +8,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 import ucr.ac.cr.controlador.Manejador_Login;
 
-/**
- *
- * @author danig
- */
 public class FRM_Menu extends javax.swing.JFrame {
 
     /**
