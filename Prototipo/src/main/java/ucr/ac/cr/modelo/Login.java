@@ -12,10 +12,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-/**
- *
- * @author anton
- */
 public class Login {
     private String carnet;
     private String contrasena;
