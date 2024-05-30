@@ -4,10 +4,6 @@
  */
 package ucr.ac.cr.modelo;
 
-/**
- *
- * @author danig
- */
 public class Estudiante {
 
     private String carnet;
