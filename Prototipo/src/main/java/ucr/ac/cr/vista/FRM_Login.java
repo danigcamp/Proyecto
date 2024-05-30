@@ -8,10 +8,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-/**
- *
- * @author danig
- */
 public class FRM_Login extends javax.swing.JFrame {
 
     /**
