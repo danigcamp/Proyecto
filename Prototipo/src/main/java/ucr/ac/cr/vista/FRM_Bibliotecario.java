@@ -15,10 +15,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author danig
- */
 public class FRM_Bibliotecario extends javax.swing.JFrame {
 
     /**
