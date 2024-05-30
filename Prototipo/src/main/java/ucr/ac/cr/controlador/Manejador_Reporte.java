@@ -12,10 +12,6 @@ import ucr.ac.cr.modelo.Registro_Login;
 import ucr.ac.cr.modelo.Registro_Prestamo;
 import ucr.ac.cr.vista.FRM_Reporte;
 
-/**
- *
- * @author danig
- */
 public class Manejador_Reporte implements ActionListener {
 
     private final Manejador_Menu menu;
