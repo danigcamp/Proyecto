@@ -10,10 +10,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import ucr.ac.cr.modelo.Login;
 
-/**
- *
- * @author danig
- */
 public class Manejador_Menu implements ActionListener {
 
     private FRM_Menu frmMenu;
