@@ -11,10 +11,6 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import ucr.ac.cr.modelo.Login;
 
-/**
- *
- * @author danig
- */
 public class FRM_Reporte extends javax.swing.JFrame {
 
     /**
