@@ -4,10 +4,6 @@
  */
 package ucr.ac.cr.vista;
 
-/**
- *
- * @author anton
- */
 public class FRM_About extends javax.swing.JFrame {
 
     /**
