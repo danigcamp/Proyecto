@@ -8,10 +8,6 @@ import ucr.ac.cr.controlador.Manejador_Login;
 import ucr.ac.cr.controlador.Manejador_Menu;
 import ucr.ac.cr.modelo.Login;
 
-/**
- *
- * @author danig
- */
 public class Main 
 {
     public static void main(String[] args) 
