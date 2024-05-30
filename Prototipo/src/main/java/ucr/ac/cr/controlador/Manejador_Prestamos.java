@@ -17,10 +17,6 @@ import org.json.simple.parser.ParseException;
 import ucr.ac.cr.modelo.Libro;
 import ucr.ac.cr.modelo.Login;
 
-/**
- *
- * @author danig
- */
 public class Manejador_Prestamos implements ActionListener {
 
     private ArrayList<Libro> listaLibros;
