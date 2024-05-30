@@ -13,10 +13,6 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import ucr.ac.cr.modelo.Login;
 
-/**
- *
- * @author danig
- */
 public class Manejador_Libros implements ActionListener {
     
     private Libro libro;
